@@ -18,7 +18,7 @@ tapdance = TapDance()
 
 holdtap.tap_time = 200
 
-keyboard.col_pins = (board.GP0,board.GP1,board.GP2,board.GP3, board.GP4,board.GP15,board.GP14,board.GP13)
+keyboard.col_pins = (board.GP0,board.GP1,board.GP2,board.GP3, board.GP4,board.GP5,board.GP6,board.GP7)
 
 keyboard.row_pins = (board.GP18,board.GP19,board.GP20,board.GP21)
 
