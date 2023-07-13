@@ -18,9 +18,9 @@ tapdance = TapDance()
 
 holdtap.tap_time = 200
 
-keyboard.col_pins = (board.GP0,board.GP1,board.GP2,board.GP3, board.GP4,board.GP5,board.GP6,board.GP7)
+keyboard.col_pins = (board.GP14,board.GP9,board.GP3,board.GP4, board.GP18,board.GP19,board.GP20,board.GP21)
 
-keyboard.row_pins = (board.GP18,board.GP19,board.GP20,board.GP21)
+keyboard.row_pins = (board.GP0,board.GP5,board.GP10,board.GP15)
 
 keyboard.diode_orientation = DiodeOrientation.COL2ROW
 
@@ -53,14 +53,15 @@ L1_TAB = KC.HT(KC.TAB, KC.MO(1))
 L2_SPC = KC.HT(KC.SPC, KC.MO(2))
 L3_BSP = KC.HT(KC.BSPC, KC.MO(3))
 L4_DEL = KC.HT(KC.DEL, KC.MO(4))
-
-M_ENT = KC.TD(KC.M, KC.ENT, tap_time=170)
-G_ENT = KC.TD(KC.G, KC.ESC, tap_time=170)
+L5_G   = KC.HT(KC.G, KC.MO(5))
 
 CNTRL_Z = KC.LCTL(KC.Z)
 CNTRL_Y = KC.LCTL(KC.Y)
 CNTRL_C = KC.LCTL(KC.C)
 CNTRL_V = KC.LCTL(KC.V)
+CNTRL_X = KC.LCTL(KC.X)
+CNTRL_A = KC.LCTL(KC.A)
+
 
 X = KC.NO
 
@@ -77,39 +78,46 @@ layer0 = [
     KC.Q     ,  KC.W      ,  KC.F     ,  KC.P     ,  KC.L     ,  KC.U     ,  KC.Y    ,  KC.J     ,
     A_LCTL   ,  R_LSFT    ,  S_LGUI   ,  T_LALT   ,  N_RALT   ,  E_RGUI   ,  I_RSFT  ,  O_RCTL   ,
     KC.X     ,  KC.C      ,  KC.D     ,  KC.V     ,  KC.H     ,  KC.B     ,  KC.K    ,  KC.Z     ,
-    X        ,  L3_BSP    ,  L1_TAB   ,  G_ENT    ,  M_ENT    ,  L2_SPC   ,  L4_DEL  ,  X        ,
+    X        ,  L5_G      ,  L3_BSP   ,  L1_TAB   ,  L4_DEL   ,  L2_SPC   ,  KC.M    ,  X        ,
     ]
 
 layer1 = [
-    KC.DQT   ,  KC.QUOT   ,  KC.LPRN  ,  KC.LABK  ,  KC.RABK  ,  KC.RPRN  ,  KC.SCLN  ,  KC.COLN  ,
+    KC.QUOT  ,  KC.DQT    ,  KC.LPRN  ,  KC.LABK  ,  KC.RABK  ,  KC.RPRN  ,  KC.SCLN  ,  KC.COLN  ,
     KC.N1    ,  KC.N2     ,  KC.N3    ,  KC.N4    ,  KC.N7    ,  KC.N8    ,  KC.N9    ,  KC.N0    ,
     KC.TILD  ,  KC.GRV    ,  KC.LCBR  ,  KC.LBRC  ,  KC.RBRC  ,  KC.RCBR  ,  KC.COMM  ,  KC.DOT   ,
-    X        ,  L3_BSP    ,  L1_TAB   ,  KC.N5    ,  M_ENT    ,  KC.N6    ,  L4_DEL   ,  X        ,
+    X        ,  KC.N5     ,  L3_BSP   ,  L1_TAB   ,  L4_DEL   ,  L2_SPC   ,  KC.N6    ,  X        ,
     ]
 
 layer2 = [
     KC.EXLM  ,  KC.AT     ,  KC.HASH  ,  KC.DLR   ,  KC.PERC  ,  KC.CIRC  ,  KC.AMPR ,  KC.ASTR  ,
     HOME_LCTL,  PGDN_LSFT ,  PGUP_LGUI,  END_LALT ,  KC.LEFT  ,  KC.DOWN  ,  KC.UP   ,  KC.RIGHT ,
     KC.QUES  ,  KC.PIPE   ,  KC.BSLS  ,  KC.SLSH  ,  KC.UNDS  ,  KC.MINS  ,  KC.PLUS ,  KC.EQL   ,
-    X        ,  L3_BSP    ,  L1_TAB   ,  KC.ESC   ,  KC.ENT   ,  L2_SPC   ,  L4_DEL  ,  X        ,
+    X        ,  KC.ESC   ,  L3_BSP    ,  L1_TAB   ,  L4_DEL   ,  L2_SPC   ,  KC.ENT   ,  X        ,
     ]
 
 layer3 = [
-    KC.F1    ,  KC.F2     ,  KC.F3    ,  KC.F4    ,  KC.MW_UP ,  X        ,  X       ,  X        ,
-    KC.MS_LT ,  KC.MS_DN  ,  KC.MS_UP ,  KC.MS_RT ,  KC.MB_LMB,  KC.MB_RMB,  X       ,  X        ,
+    KC.ESC   ,  KC.F2     ,  KC.F3    ,  KC.ENT   ,  KC.MW_UP ,  X        ,  X       ,  X        , 
+    CNTRL_A  ,  CNTRL_X   ,  KC.MB_LMB,  KC.MB_RMB,  KC.MS_LT ,  KC.MS_DN ,  KC.MS_UP,  KC.MS_RT , 
     CNTRL_Z  ,  CNTRL_C   ,  CNTRL_V  ,  CNTRL_Y  ,  KC.MW_DN ,  X        ,  X       ,  X        ,
-    X        ,  L3_BSP    ,  L1_TAB   ,  X        ,  KC.PSCR  ,  L2_SPC   ,  L4_DEL  ,  X        ,
+    X        ,  X        ,  L3_BSP    ,  L1_TAB   ,  L4_DEL   ,  L2_SPC   ,  KC.PSCR  ,  X        ,
     ]
 
 layer4 = [
     X        ,  X         ,  X        ,  X        ,  X        ,  X        ,  X       ,  X        ,
-    X        ,  KC.BRID   ,  KC.BRIU  ,  X        ,  KC.MPLY  ,  KC.VOLD  ,  KC.VOLU ,  X        ,  
+    X        ,  KC.BRIU   ,  KC.BRID  ,  X        ,  KC.MPLY  ,  KC.VOLD  ,  KC.VOLU ,  X        ,  
     X        ,  X         ,  X        ,  X        ,  X        ,  X        ,  X       ,  X        ,
-    X        ,  L3_BSP    ,  L1_TAB   ,  X        ,  KC.MUTE  ,  L2_SPC   ,  L4_DEL  ,  X        ,
+    X        ,  X        ,  L3_BSP    ,  L1_TAB   ,  L4_DEL   ,  L2_SPC   ,  KC.MUTE  ,  X        ,
     ]    
 
+layer5 = [
+    KC.ESC   ,  X        ,  X        ,  KC.ENT   ,  KC.N7    ,  KC.N8    ,  KC.N9    ,  X        ,
+    X        ,  X        ,  X        ,  X        ,  KC.N4    ,  KC.N5    ,  KC.N6    ,  KC.N0    ,
+    X        ,  X        ,  X        ,  X        ,  KC.N1    ,  KC.N2    ,  KC.N3    ,  X        ,
+    X        ,  X        ,  L3_BSP   ,  L1_TAB   ,  L4_DEL   ,  L2_SPC   ,  X        ,  X        ,
+    ]
+
 keyboard.keymap = [
-    layer0, layer1, layer2, layer3, layer4
+    layer0, layer1, layer2, layer3, layer4, layer5
     ]
 if __name__ == '__main__':
     keyboard.go()
