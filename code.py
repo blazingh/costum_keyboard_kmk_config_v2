@@ -53,7 +53,6 @@ L3_TAB = KC.HT(KC.TAB, KC.MO(3))
 L2_SPC = KC.HT(KC.SPC, KC.MO(2))
 L1_BSP = KC.HT(KC.BSPC, KC.MO(1))
 L4_DEL = KC.HT(KC.DEL, KC.MO(4))
-L5_G   = KC.HT(KC.G, KC.MO(5))
 
 CNTRL_Z = KC.LCTL(KC.Z)
 CNTRL_Y = KC.LCTL(KC.Y)
@@ -61,6 +60,9 @@ CNTRL_C = KC.LCTL(KC.C)
 CNTRL_V = KC.LCTL(KC.V)
 CNTRL_X = KC.LCTL(KC.X)
 CNTRL_A = KC.LCTL(KC.A)
+CNTRL_S = KC.LCTL(KC.S)
+
+WIND_V = KC.LGUI(KC.V)
 
 
 X = KC.NO
@@ -76,29 +78,29 @@ layer0 = [
 
 layer0 = [
     KC.Q     ,  KC.W      ,  KC.F     ,  KC.P     ,  KC.L     ,  KC.U     ,  KC.Y    ,  KC.J     ,
-    A_LCTL   ,  R_LSFT    ,  S_LGUI   ,  T_LALT   ,  N_RALT   ,  E_RGUI   ,  I_RSFT  ,  O_RCTL   ,
+    KC.A     ,  KC.R      ,  KC.S     ,  KC.T     ,  KC.N     ,  KC.E     ,  KC.I    ,  KC.O     ,
     KC.X     ,  KC.C      ,  KC.D     ,  KC.V     ,  KC.H     ,  KC.B     ,  KC.K    ,  KC.Z     ,
-    X        ,  L5_G      ,  L1_BSP   ,  L3_TAB   ,  L4_DEL   ,  L2_SPC   ,  KC.M    ,  X        ,
+    X        ,  KC.G      ,  L1_BSP   ,  L3_TAB   ,  L4_DEL   ,  L2_SPC   ,  KC.M    ,  X        ,
     ]
 
 layer1 = [
     KC.QUOT  ,  KC.DQT    ,  KC.LPRN  ,  KC.LABK  ,  KC.RABK  ,  KC.RPRN  ,  KC.SCLN ,  KC.COLN  ,
-    KC.N1    ,  KC.N2     ,  KC.N3    ,  KC.N4    ,  KC.N7    ,  KC.N8    ,  KC.N9   ,  KC.N0    ,
+    KC.PERC  ,  KC.CIRC   ,  KC.AMPR  ,  KC.ASTR  ,  X        ,  X        ,  X       ,  KC.SLSH  ,
     KC.TILD  ,  KC.GRV    ,  KC.LCBR  ,  KC.LBRC  ,  KC.RBRC  ,  KC.RCBR  ,  KC.COMM ,  KC.DOT   ,
-    X        ,  KC.N5     ,  L1_BSP   ,  L3_TAB   ,  L4_DEL   ,  L2_SPC   ,  KC.N6   ,  X        ,
+    X        ,  X         ,  L1_BSP   ,  L3_TAB   ,  L4_DEL   ,  L2_SPC   ,  KC.N6   ,  X        ,
     ]
 
 layer2 = [
-    KC.EXLM  ,  KC.AT     ,  KC.HASH  ,  KC.DLR   ,  KC.PERC  ,  KC.CIRC  ,  KC.AMPR ,  KC.ASTR  ,
+    KC.EXLM  ,  KC.AT     ,  KC.HASH  ,  KC.DLR   ,  KC.BSPC  ,  KC.CIRC  ,  KC.AMPR ,  KC.DEL   ,
     HOME_LCTL,  PGDN_LSFT ,  PGUP_LGUI,  END_LALT ,  KC.LEFT  ,  KC.DOWN  ,  KC.UP   ,  KC.RIGHT ,
     KC.QUES  ,  KC.PIPE   ,  KC.BSLS  ,  KC.SLSH  ,  KC.UNDS  ,  KC.MINS  ,  KC.PLUS ,  KC.EQL   ,
-    X        ,  KC.ESC    ,  L1_BSP   ,  L3_TAB   ,  L4_DEL   ,  L2_SPC   ,  KC.ENT  ,  X        ,
+    X        ,  X         ,  L1_BSP   ,  L3_TAB   ,  L4_DEL   ,  L2_SPC   ,  X       ,  X        ,
     ]
 
 layer3 = [
-    KC.ESC   ,  KC.F2     ,  KC.F3    ,  KC.ENT   ,  KC.MW_UP ,  X        ,  X       ,  X        , 
-    CNTRL_A  ,  CNTRL_X   ,  KC.MB_LMB,  KC.MB_RMB,  KC.MS_LT ,  KC.MS_DN ,  KC.MS_UP,  KC.MS_RT , 
-    CNTRL_Z  ,  CNTRL_C   ,  CNTRL_V  ,  CNTRL_Y  ,  KC.MW_DN ,  X        ,  X       ,  X        ,
+    KC.ESC   ,  KC.LSFT   ,  KC.LALT  ,  KC.TAB   ,  KC.N7    ,  KC.N8    ,  KC.N9   ,  KC.ENT   , 
+    CNTRL_A  ,  CNTRL_X   ,  WIND_V   ,  CNTRL_S  ,  KC.N4    ,  KC.N5    ,  KC.N6   ,  KC.N0    , 
+    CNTRL_Z  ,  CNTRL_C   ,  CNTRL_V  ,  CNTRL_Y  ,  KC.N1    ,  KC.N2    ,  KC.N3   ,  KC.DOT   ,
     X        ,  X         ,  L1_BSP   ,  L3_TAB   ,  L4_DEL   ,  L2_SPC   ,  KC.PSCR ,  X        ,
     ]
 
@@ -106,18 +108,12 @@ layer4 = [
     X        ,  X         ,  X        ,  X        ,  X        ,  X        ,  X       ,  X        ,
     X        ,  KC.BRIU   ,  KC.BRID  ,  X        ,  KC.MPLY  ,  KC.VOLD  ,  KC.VOLU ,  X        ,  
     X        ,  X         ,  X        ,  X        ,  X        ,  X        ,  X       ,  X        ,
-    X        ,  X         ,  L1_BSP   ,  L3_TAB   ,  L4_DEL   ,  L2_SPC   ,  KC.MUTE ,  X        ,
+    X        ,  X         ,  L1_BSP   ,  L3_TAB   ,  L4_DEL   ,  L2_SPC   ,  X       ,  X        ,
     ]    
 
-layer5 = [
-    KC.ESC   ,  X        ,  X        ,  KC.ENT   ,  KC.N7    ,  KC.N8    ,  KC.N9    ,  X        ,
-    X        ,  X        ,  X        ,  X        ,  KC.N4    ,  KC.N5    ,  KC.N6    ,  KC.N0    ,
-    X        ,  X        ,  X        ,  X        ,  KC.N1    ,  KC.N2    ,  KC.N3    ,  KC.DOT   ,
-    X        ,  X        ,  L1_BSP   ,  L3_TAB   ,  L4_DEL   ,  L2_SPC   ,  X        ,  X        ,
-    ]
 
 keyboard.keymap = [
-    layer0, layer1, layer2, layer3, layer4, layer5
+    layer0, layer1, layer2, layer3, layer4
     ]
 if __name__ == '__main__':
     keyboard.go()
