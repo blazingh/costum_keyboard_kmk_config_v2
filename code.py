@@ -7,6 +7,7 @@ from kmk.modules.mouse_keys import MouseKeys
 from kmk.modules.layers import Layers
 from kmk.extensions.media_keys import MediaKeys
 from kmk.modules.tapdance import TapDance
+from kmk.modules.capsword import CapsWord
 
 from kmk.modules.holdtap import HoldTap
 
@@ -16,6 +17,8 @@ holdtap = HoldTap()
 
 tapdance = TapDance()
 
+caps_word=CapsWord()
+
 holdtap.tap_time = 200
 
 keyboard.col_pins = (board.GP14,board.GP9,board.GP3,board.GP4, board.GP18,board.GP19,board.GP20,board.GP21)
@@ -23,6 +26,8 @@ keyboard.col_pins = (board.GP14,board.GP9,board.GP3,board.GP4, board.GP18,board.
 keyboard.row_pins = (board.GP0,board.GP5,board.GP10,board.GP15)
 
 keyboard.diode_orientation = DiodeOrientation.COL2ROW
+
+keyboard.modules.append(caps_word)
 
 keyboard.modules.append(MouseKeys())
 
@@ -52,7 +57,7 @@ END_LALT = KC.HT(KC.END, KC.LALT, prefer_hold=False, tap_interrupted=False)
 L3_TAB = KC.HT(KC.TAB, KC.MO(3))
 L2_SPC = KC.HT(KC.SPC, KC.MO(2))
 L1_BSP = KC.HT(KC.BSPC, KC.MO(1))
-L4_DEL = KC.HT(KC.DEL, KC.MO(4))
+L4_DEL = KC.HT(KC.DEL, KC.LCTL)
 
 CNTRL_Z = KC.LCTL(KC.Z)
 CNTRL_Y = KC.LCTL(KC.Y)
@@ -98,9 +103,9 @@ layer2 = [
     ]
 
 layer3 = [
-    KC.ESC   ,  KC.LSFT   ,  KC.LALT  ,  KC.TAB   ,  KC.N7    ,  KC.N8    ,  KC.N9   ,  KC.ENT   , 
-    CNTRL_A  ,  CNTRL_X   ,  WIND_V   ,  CNTRL_S  ,  KC.N4    ,  KC.N5    ,  KC.N6   ,  KC.N0    , 
-    CNTRL_Z  ,  CNTRL_C   ,  CNTRL_V  ,  CNTRL_Y  ,  KC.N1    ,  KC.N2    ,  KC.N3   ,  KC.DOT   ,
+    KC.ESC   ,  X         ,  X        ,  KC.TAB   ,  KC.N7    ,  KC.N8    ,  KC.N9   ,  KC.ENT   , 
+    KC.LCTL  ,  KC.LSFT   ,  KC.LALT  ,  KC.LGUI  ,  KC.N4    ,  KC.N5    ,  KC.N6   ,  KC.N0    , 
+    X        ,  X         ,  X        ,  KC.CW    ,  KC.N1    ,  KC.N2    ,  KC.N3   ,  KC.DOT   ,
     X        ,  X         ,  L1_BSP   ,  L3_TAB   ,  L4_DEL   ,  L2_SPC   ,  KC.PSCR ,  X        ,
     ]
 
