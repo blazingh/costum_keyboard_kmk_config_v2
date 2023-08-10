@@ -3,71 +3,54 @@ import board
 from kmk.kmk_keyboard import KMKKeyboard
 from kmk.keys import KC
 from kmk.scanners import DiodeOrientation
-from kmk.modules.mouse_keys import MouseKeys
 from kmk.modules.layers import Layers
-from kmk.extensions.media_keys import MediaKeys
 from kmk.modules.tapdance import TapDance
-from kmk.modules.capsword import CapsWord
 
 from kmk.modules.holdtap import HoldTap
 
 keyboard = KMKKeyboard()
-
 holdtap = HoldTap()
-
 tapdance = TapDance()
-
-caps_word=CapsWord()
 
 holdtap.tap_time = 200
 
-keyboard.col_pins = (board.GP14,board.GP9,board.GP3,board.GP4, board.GP18,board.GP19,board.GP20,board.GP21)
+tapdance.tap_time = 750
 
-keyboard.row_pins = (board.GP0,board.GP5,board.GP10,board.GP15)
+combo_layers = {(1, 2): 3}
 
-keyboard.diode_orientation = DiodeOrientation.COL2ROW
-
-keyboard.modules.append(caps_word)
-
-keyboard.modules.append(MouseKeys())
-
-keyboard.modules.append(Layers())
-
+keyboard.modules.append(Layers(combo_layers))
 keyboard.modules.append(holdtap)
-
 keyboard.modules.append(tapdance)
 
-keyboard.extensions.append(MediaKeys())
+keyboard.col_pins = (board.GP14,board.GP9,board.GP3,board.GP4, board.GP18,board.GP19,board.GP20,board.GP21)
+keyboard.row_pins = (board.GP0,board.GP5,board.GP10,board.GP15)
+keyboard.diode_orientation = DiodeOrientation.COL2ROW
 
-A_LCTL = KC.HT(KC.A, KC.LCTRL, prefer_hold=False, tap_interrupted=False)
-R_LSFT = KC.HT(KC.R, KC.LSFT, prefer_hold=False, tap_interrupted=False)
-S_LGUI = KC.HT(KC.S, KC.LGUI, prefer_hold=False, tap_interrupted=False)
-T_LALT = KC.HT(KC.T, KC.LALT, prefer_hold=False, tap_interrupted=False)
 
-N_RALT = KC.HT(KC.N, KC.RALT, prefer_hold=False, tap_interrupted=False)
-E_RGUI = KC.HT(KC.E, KC.RGUI, prefer_hold=False, tap_interrupted=False)
-I_RSFT = KC.HT(KC.I, KC.RSFT, prefer_hold=False, tap_interrupted=False)
-O_RCTL = KC.HT(KC.O, KC.RCTRL, prefer_hold=False, tap_interrupted=False)
+HOME_LCTL = KC.HT(KC.HOME    , KC.LCTRL, prefer_hold=False, tap_interrupted=False) # home and control
+PGDN_LSFT = KC.HT(KC.PAGEDOWN, KC.LSFT , prefer_hold=False, tap_interrupted=False) # page down and shift
+PGUP_LGUI = KC.HT(KC.PAGEUP  , KC.LGUI , prefer_hold=False, tap_interrupted=False) # page up and gui
+END_LALT  = KC.HT(KC.END     , KC.LALT , prefer_hold=False, tap_interrupted=False) # end and alt
 
-HOME_LCTL = KC.HT(KC.HOME, KC.LCTRL, prefer_hold=False, tap_interrupted=False)
-PGDN_LSFT = KC.HT(KC.PAGEDOWN, KC.LSFT, prefer_hold=False, tap_interrupted=False)
-PGUP_LGUI = KC.HT(KC.PAGEUP, KC.LGUI, prefer_hold=False, tap_interrupted=False)
-END_LALT = KC.HT(KC.END, KC.LALT, prefer_hold=False, tap_interrupted=False)
+L1_BSP = KC.HT(KC.BSPC, KC.MO(1)) # backspace and layer 1
+L2_SPC = KC.HT(KC.SPC , KC.MO(2)) # space and layer 2
 
-L3_TAB = KC.HT(KC.TAB, KC.MO(3))
-L2_SPC = KC.HT(KC.SPC, KC.MO(2))
-L1_BSP = KC.HT(KC.BSPC, KC.MO(1))
-L4_DEL = KC.HT(KC.DEL, KC.LCTL)
+TAB_CTRL = KC.HT(KC.TAB, KC.LCTL) # tab and control
+DEL_SHFT = KC.HT(KC.DEL, KC.LSFT) # delete and shift
 
-CNTRL_Z = KC.LCTL(KC.Z)
-CNTRL_Y = KC.LCTL(KC.Y)
-CNTRL_C = KC.LCTL(KC.C)
-CNTRL_V = KC.LCTL(KC.V)
-CNTRL_X = KC.LCTL(KC.X)
-CNTRL_A = KC.LCTL(KC.A)
-CNTRL_S = KC.LCTL(KC.S)
-
-WIND_V = KC.LGUI(KC.V)
+    
+L_R_PRN   = KC.TD(  KC.LPRN,  KC.RPRN,  tap_time=200) # open and close parenthesis
+L_R_ABK   = KC.TD(  KC.LABK,  KC.RABK,  tap_time=200) # open and close angle brackets
+L_R_BKT   = KC.TD(  KC.LBRC,  KC.RBRC,  tap_time=200) # open and close square brackets
+L_R_BRC   = KC.TD(  KC.LCBR,  KC.RCBR,  tap_time=200) # open and close curly brackets
+QUOT_DQT  = KC.TD(  KC.QUOT,  KC.DQT ,  tap_time=200) # single and double quotes
+COLN_SCLN = KC.TD(  KC.COLN,  KC.SCLN,  tap_time=200) # colon and semicolon
+DOT_COM   = KC.TD(  KC.DOT ,  KC.COMM,  tap_time=200) # dot and comma
+EXLM_QUES = KC.TD(  KC.EXLM,  KC.QUES,  tap_time=200) # exclamation and question mark
+MINS_PLUS = KC.TD(  KC.MINS,  KC.PLUS,  tap_time=200) # minus and plus
+UNDS_EQL  = KC.TD(  KC.UNDS,  KC.EQL ,  tap_time=200) # underscore and equal
+TILD_GRV  = KC.TD(  KC.TILD,  KC.GRV ,  tap_time=200) # tilde and grave
+SLSH_BSLS = KC.TD(  KC.SLSH,  KC.BSLS,  KC.PIPE,  tap_time=200) # slash, backslash, and pipe
 
 
 X = KC.NO
@@ -80,45 +63,43 @@ layer0 = [
     X        ,  L3_BSP   ,  L1_TAB   ,  X        ,  X        ,  L2_SPC   ,  L4_DEL   ,  X        ,
     ]
 '''
-
+# Base layer
 layer0 = [
     KC.Q     ,  KC.W      ,  KC.F     ,  KC.P     ,  KC.L     ,  KC.U     ,  KC.Y    ,  KC.J     ,
     KC.A     ,  KC.R      ,  KC.S     ,  KC.T     ,  KC.N     ,  KC.E     ,  KC.I    ,  KC.O     ,
     KC.X     ,  KC.C      ,  KC.D     ,  KC.V     ,  KC.H     ,  KC.B     ,  KC.K    ,  KC.Z     ,
-    X        ,  KC.G      ,  L1_BSP   ,  L3_TAB   ,  L4_DEL   ,  L2_SPC   ,  KC.M    ,  X        ,
+    X        ,  KC.G      ,  L1_BSP   ,  TAB_CTRL ,  DEL_SHFT ,  L2_SPC   ,  KC.M    ,  X        ,
     ]
 
+# left hand layer 1
 layer1 = [
-    KC.QUOT  ,  KC.DQT    ,  KC.LPRN  ,  KC.LABK  ,  KC.RABK  ,  KC.RPRN  ,  KC.SCLN ,  KC.COLN  ,
-    KC.PERC  ,  KC.CIRC   ,  KC.AMPR  ,  KC.ASTR  ,  X        ,  X        ,  X       ,  KC.SLSH  ,
-    KC.TILD  ,  KC.GRV    ,  KC.LCBR  ,  KC.LBRC  ,  KC.RBRC  ,  KC.RCBR  ,  KC.COMM ,  KC.DOT   ,
-    X        ,  X         ,  L1_BSP   ,  L3_TAB   ,  L4_DEL   ,  L2_SPC   ,  KC.N6   ,  X        ,
+    EXLM_QUES,  KC.AT     ,  KC.HASH  ,  KC.DLR   ,  KC.PERC  ,  KC.CIRC  ,  KC.AMPR ,  KC.ASTR  ,
+    SLSH_BSLS,  QUOT_DQT  ,  L_R_PRN  ,  L_R_ABK  ,  X        ,  X        ,  X       ,  X        ,
+    X        ,  TILD_GRV  ,  L_R_BRC  ,  L_R_BKT  ,  UNDS_EQL ,  MINS_PLUS, COLN_SCLN,  DOT_COM  ,
+    X        ,  X         ,  L1_BSP   ,  TAB_CTRL ,  DEL_SHFT ,  L2_SPC   ,  X       ,  X        ,
     ]
 
+# right hand layer 2
 layer2 = [
-    KC.EXLM  ,  KC.AT     ,  KC.HASH  ,  KC.DLR   ,  KC.BSPC  ,  KC.CIRC  ,  KC.AMPR ,  KC.DEL   ,
+    KC.ESC   ,   X        ,  X        ,  X        ,  KC.BSPC  ,  X        ,  X       ,  KC.ENT   ,
     HOME_LCTL,  PGDN_LSFT ,  PGUP_LGUI,  END_LALT ,  KC.LEFT  ,  KC.DOWN  ,  KC.UP   ,  KC.RIGHT ,
-    KC.QUES  ,  KC.PIPE   ,  KC.BSLS  ,  KC.SLSH  ,  KC.UNDS  ,  KC.MINS  ,  KC.PLUS ,  KC.EQL   ,
-    X        ,  X         ,  L1_BSP   ,  L3_TAB   ,  L4_DEL   ,  L2_SPC   ,  X       ,  X        ,
+    X        ,  X         ,  X        ,  X        ,  X        ,  X        ,  X       ,  X        ,
+    X        ,  X         ,  L1_BSP   ,  TAB_CTRL ,  DEL_SHFT ,  L2_SPC   ,  X       ,  X        ,
     ]
 
+# two handed layer 3
 layer3 = [
-    KC.ESC   ,  X         ,  X        ,  KC.TAB   ,  KC.N7    ,  KC.N8    ,  KC.N9   ,  KC.ENT   , 
-    KC.LCTL  ,  KC.LSFT   ,  KC.LALT  ,  KC.LGUI  ,  KC.N4    ,  KC.N5    ,  KC.N6   ,  KC.N0    , 
-    X        ,  X         ,  X        ,  KC.CW    ,  KC.N1    ,  KC.N2    ,  KC.N3   ,  KC.DOT   ,
-    X        ,  X         ,  L1_BSP   ,  L3_TAB   ,  L4_DEL   ,  L2_SPC   ,  KC.PSCR ,  X        ,
+    X        ,  X         ,  X        ,  X        ,  KC.N7    ,  KC.N8    ,  KC.N9   ,  X        , 
+    X        ,  X         ,  X        ,  X        ,  KC.N4    ,  KC.N5    ,  KC.N6   ,  KC.N0    , 
+    X        ,  X         ,  X        ,  X        ,  KC.N1    ,  KC.N2    ,  KC.N3   ,  KC.DOT   ,
+    X        ,  X         ,  L1_BSP   ,  TAB_CTRL ,  DEL_SHFT ,  L2_SPC   ,  KC.PSCR ,  X        ,
     ]
-
-layer4 = [
-    X        ,  X         ,  X        ,  X        ,  X        ,  X        ,  X       ,  X        ,
-    X        ,  KC.BRIU   ,  KC.BRID  ,  X        ,  KC.MPLY  ,  KC.VOLD  ,  KC.VOLU ,  X        ,  
-    X        ,  X         ,  X        ,  X        ,  X        ,  X        ,  X       ,  X        ,
-    X        ,  X         ,  L1_BSP   ,  L3_TAB   ,  L4_DEL   ,  L2_SPC   ,  X       ,  X        ,
-    ]    
-
+  
 
 keyboard.keymap = [
-    layer0, layer1, layer2, layer3, layer4
+    layer0, layer1, layer2, layer3
     ]
+
+
 if __name__ == '__main__':
     keyboard.go()
